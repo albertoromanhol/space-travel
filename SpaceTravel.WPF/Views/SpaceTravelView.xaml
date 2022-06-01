@@ -1,0 +1,97 @@
+﻿<Window x:Class="SpaceTravel.WPF.Views.SpaceTravelView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="clr-namespace:SpaceTravel.WPF.ViewModels" 
+        d:DataContext="{d:DesignInstance Type=viewmodels:SpaceTravelViewModel}"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="SpaceTravel" Height="600" Width="971" Background="#FF282828">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="80" />
+            <RowDefinition />
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition />
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="HeaderGrid" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="971" Grid.ColumnSpan="3">
+            <Image Width="73" Height="73"
+                Source="../Resources/IsarLogo.png"
+                RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Left"/>
+            <TextBlock Text="Space Travel"
+                Foreground="White"
+                FontSize="34"
+                FontWeight="Bold"
+                TextAlignment="Center"
+                Margin="0,10,0,10"/>
+        </Grid>
+
+        <Grid x:Name="SpacecraftGrid" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="971" Grid.ColumnSpan="3" Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid x:Name="SpacecraftSelectGrid" HorizontalAlignment="Right" VerticalAlignment="Center" UseLayoutRounding="False" Width="486" Height="60">
+                <TextBlock Text="Spacecraft"
+                Foreground="White"
+                FontSize="18"
+                FontWeight="Bold"
+                TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,0,100,0"/>
+                <ComboBox x:Name="SpacecraftSelect" 
+                          ItemsSource="{Binding Spacecrafts}"
+                          SelectedItem="{Binding SpacecraftSelected}"
+                            DisplayMemberPath="Name"
+                          
+                          Height="30" VerticalAlignment="Bottom" Width="250" HorizontalAlignment="Left" Margin="50,0,0,0" />
+            </Grid>
+            <Grid x:Name="PassengersGrid" HorizontalAlignment="Center" VerticalAlignment="Center" UseLayoutRounding="False" Width="486" Height="60" Margin="50,0,50,0" Grid.Column="1">
+                <TextBlock Text="Passengers"
+                Foreground="White"
+                FontSize="18"
+                FontWeight="Bold"
+                TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,0,100,0"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Slider x:Name="PassengersSlider"
+                            Minimum="0"
+                            Maximum="{Binding MaxPassengers}"
+                            Value="{Binding CurrentPassengers}"
+                            VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,20,0,0" Width="180" />
+
+                    <Grid Grid.Column="1" Width="90" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,4">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="CurrentPassengers" Text="{Binding CurrentPassengers, Mode=TwoWay}" FontSize="18" Foreground="White" FontWeight="Bold" HorizontalAlignment="Right" />
+                        <TextBlock FontSize="18" Text="/" Foreground="White" FontWeight="Bold" Grid.Column="1" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="MaxPassengers" Text="{Binding MaxPassengers, Mode=TwoWay}" FontSize="18" Foreground="White" FontWeight="Bold" Grid.Column="2" HorizontalAlignment="Left"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>

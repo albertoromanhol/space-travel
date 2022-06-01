@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dti\\Documents\\repos\\space-travel\\SpaceTravel\\SpaceTravel.View.csproj",
-      "projectName": "SpaceTravel.View",
-      "projectPath": "C:\\Users\\dti\\Documents\\repos\\space-travel\\SpaceTravel\\SpaceTravel.View.csproj",
+      "projectUniqueName": "C:\\Users\\dti\\Documents\\repos\\space-travel\\SpaceTravel\\SpaceTravel.VPF.csproj",
+      "projectName": "SpaceTravel.VPF",
+      "projectPath": "C:\\Users\\dti\\Documents\\repos\\space-travel\\SpaceTravel\\SpaceTravel.VPF.csproj",
       "packagesPath": "C:\\Users\\dti\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\dti\\Documents\\repos\\space-travel\\SpaceTravel\\obj\\",
       "projectStyle": "PackageReference",

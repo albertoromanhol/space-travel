@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gsdKqCHAdeva1rIS/ppWSEUtxSg5sp3V5gPGlUeGyL0Aql1k5RI4/dI7lwrh6BHUrcq3c4PxIlS9a6s30HQoMA==",
+  "dgSpecHash": "kGdYb9kHeMQ2oP3vOPXPbnRTn2GEJe/aKANieQtoPXiMmEH7Hvi1/PYD5oOryAccxTGYeM1nbJyNcdZksKbSbg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dti\\Documents\\repos\\space-travel\\SpaceTravel\\SpaceTravel.View.csproj",
+  "projectFilePath": "C:\\Users\\dti\\Documents\\repos\\space-travel\\SpaceTravel\\SpaceTravel.VPF.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
