@@ -1,6 +1,6 @@
 ﻿namespace SpaceTravel.WPF.Models
 {
-    public class Planet
+    public class PlanetModel
     {
         public string Name { get; set; }
         public int PositionIndex { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace SpaceTravel.WPF.Models
 {
-    public class Spacecraft
+    public class SpacecraftModel
     {
         public string Name { get; set; }
         public string Type { get; set; }

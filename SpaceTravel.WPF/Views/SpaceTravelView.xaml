@@ -7,14 +7,15 @@
         d:DataContext="{d:DesignInstance Type=viewmodels:SpaceTravelViewModel}"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="SpaceTravel" Height="600" Width="971" Background="#FF282828">
+        Title="SpaceTravel" Height="700" Width="600" Background="#FF282828">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition  Height="80" />
             <RowDefinition />
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="230" />
+            <RowDefinition Height="70" />
+            <RowDefinition  Height="200" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -23,20 +24,23 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Grid x:Name="HeaderGrid" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="971" Grid.ColumnSpan="3">
+        <Grid x:Name="HeaderGrid" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="600" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="215*"/>
+                <ColumnDefinition Width="756*"/>
+            </Grid.ColumnDefinitions>
             <Image Width="73" Height="73"
-                Source="../Resources/IsarLogo.png"
-                RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Left"/>
+                Source="/Views/IsarLogo.png"
+                RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Center"/>
             <TextBlock Text="Space Travel"
                 Foreground="White"
                 FontSize="34"
                 FontWeight="Bold"
                 TextAlignment="Center"
-                Margin="0,10,0,10"/>
+                Margin="0,10,0,10" HorizontalAlignment="Center" VerticalAlignment="Stretch" Grid.ColumnSpan="2"/>
         </Grid>
 
-        <Grid x:Name="SpacecraftGrid" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="971" Grid.ColumnSpan="3" Grid.Row="1">
-
+        <Grid x:Name="SpacecraftGrid" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="3" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
@@ -46,27 +50,27 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Grid x:Name="SpacecraftSelectGrid" HorizontalAlignment="Right" VerticalAlignment="Center" UseLayoutRounding="False" Width="486" Height="60">
+            <Grid x:Name="SpacecraftSelectGrid" HorizontalAlignment="Right" VerticalAlignment="Center" UseLayoutRounding="False" Height="60">
                 <TextBlock Text="Spacecraft"
                 Foreground="White"
                 FontSize="18"
                 FontWeight="Bold"
-                TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,0,100,0"/>
+                TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 <ComboBox x:Name="SpacecraftSelect" 
                           ItemsSource="{Binding Spacecrafts}"
                           SelectedItem="{Binding SpacecraftSelected}"
                             DisplayMemberPath="Name"
                           
-                          Height="30" VerticalAlignment="Bottom" Width="250" HorizontalAlignment="Left" Margin="50,0,0,0" />
+                          Height="30" VerticalAlignment="Bottom" Width="250" HorizontalAlignment="Left" />
             </Grid>
-            <Grid x:Name="PassengersGrid" HorizontalAlignment="Center" VerticalAlignment="Center" UseLayoutRounding="False" Width="486" Height="60" Margin="50,0,50,0" Grid.Column="1">
+            <Grid x:Name="PassengersGrid" HorizontalAlignment="Center" VerticalAlignment="Center" UseLayoutRounding="False" Height="60" Grid.Column="1" Margin="30,0,0,0">
                 <TextBlock Text="Passengers"
                 Foreground="White"
                 FontSize="18"
                 FontWeight="Bold"
-                TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,0,100,0"/>
+                TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
-                <Grid>
+                <Grid Margin="0,20,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition/>
@@ -74,24 +78,92 @@
 
                     <Slider x:Name="PassengersSlider"
                             Minimum="0"
-                            Maximum="{Binding MaxPassengers}"
+                            Maximum="{Binding ElementName=SpacecraftSelect, Path=SelectedValue.Capacity}"
                             Value="{Binding CurrentPassengers}"
-                            VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,20,0,0" Width="180" />
+                            VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" />
 
-                    <Grid Grid.Column="1" Width="90" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,4">
-
+                    <Grid Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="90">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock x:Name="CurrentPassengers" Text="{Binding CurrentPassengers, Mode=TwoWay}" FontSize="18" Foreground="White" FontWeight="Bold" HorizontalAlignment="Right" />
+                        <TextBlock x:Name="CurrentPassengers" Text="{Binding ElementName=PassengersSlider, Path=Value}" FontSize="18" Foreground="White" FontWeight="Bold" HorizontalAlignment="Right" />
                         <TextBlock FontSize="18" Text="/" Foreground="White" FontWeight="Bold" Grid.Column="1" HorizontalAlignment="Center"/>
-                        <TextBlock x:Name="MaxPassengers" Text="{Binding MaxPassengers, Mode=TwoWay}" FontSize="18" Foreground="White" FontWeight="Bold" Grid.Column="2" HorizontalAlignment="Left"/>
+                        <TextBlock x:Name="MaxPassengers" Text="{Binding ElementName=SpacecraftSelect, Path=SelectedValue.Capacity}" FontSize="18" Foreground="White" FontWeight="Bold" Grid.Column="2" HorizontalAlignment="Left"/>
                     </Grid>
                 </Grid>
             </Grid>
         </Grid>
 
+        <Grid x:Name="PlanetGrid" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="3" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Planets to visit"
+                Foreground="White"
+                FontSize="18"
+                FontWeight="Bold"
+                TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+            <Grid Grid.Row="1">
+                <ComboBox ItemsSource="{Binding Planets}"
+                              SelectedItem="{Binding SelectedPlanet}"
+                              DisplayMemberPath="Name"
+                          Width="470"/>
+            </Grid>
+
+            <Grid Grid.Row="2" Height="25">
+                <TextBlock Text="Select a item to be in you list to visit. Planet to visit:"
+                    Foreground="White"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    TextAlignment="Center" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+            </Grid>
+            <Grid Grid.Row="3" Height="100">
+                <TextBox TextWrapping="Wrap" Text="{Binding PlanetNames}"
+                    FontSize="12"
+                    FontWeight="Bold" Background="#02FFFFFF" IsEnabled="False" Foreground="White" Width="470" Grid.RowSpan="3" Height="100"/>
+            </Grid>
+        </Grid>
+
+
+        <Grid x:Name="TravelGrid" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="3" Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <CheckBox x:Name="Optimize" 
+                Content="Optimize current route" 
+                Foreground="White"
+                FontSize="18"
+                FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Button x:Name="Travel" Content="TRAVEL" HorizontalAlignment="Center" Grid.Row="1" Height="30" Background="White" VerticalAlignment="Center" Width="100" Margin="0,10,0,0"/>
+        </Grid>
+
+
+
+        <Grid x:Name="Result" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="3" Grid.Row="4">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Text="List of planets to visit:"
+                Foreground="White"
+                FontSize="12"
+                FontWeight="Bold"
+                TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,9,0,0"/>
+            
+            <TextBlock  
+                    x:Name="PlanetsToVisit"
+                TextWrapping="Wrap"
+                    Text="{Binding PlanetsToVisit}"
+                    FontWeight="Bold" Background="#02FFFFFF" IsEnabled="False" Foreground="White" Width="470" Grid.Row="1" Height="100"/>
+        </Grid>
     </Grid>
 </Window>

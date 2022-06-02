@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SpaceTravel.WPF.Database
+﻿namespace SpaceTravel.WPF.Database
 {
     public static class DataJson
     {
@@ -137,5 +131,5 @@ namespace SpaceTravel.WPF.Database
         }
     ]
 }";
-}
+    }
 }
