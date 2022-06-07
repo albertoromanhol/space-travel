@@ -13,6 +13,8 @@ In this section we are going throw the code it self.
 
 ### How to run the code
 
+I make all the code using .NET 6, so you will need to have it install to run.
+
 Just download or clone the repository folder, then you should open in a C# compiler that you like and run the WPF project. In my case I develop and run the component in the VisualStudio.
 
 If you want, I'm attatching a .exe file in the root of the repository.
@@ -44,3 +46,9 @@ With the spacecraft, I have the passengers component, that it is just a slider w
 The planets components it got me to work a little bit more. I come up with a solution to use a dropdown component and when I select a new value I just push this value to a new list and display it below my dropdown. _If I use React or a JS frontend, I can create a dropdown component that when I select a value, I can push it to a list and just display a Chip component inside my dropdown._
 
 And then, I had a optimize checkbox for optimize the route and the route button itself. When I click the route button, it got the spacecraft and planets select and map it to my models in Logic project (because we didnt need all the props to calculate the route). So, it just call the Logic project, calculate the travel route and send me back a result model to display the result in the screen, with the planets visited and the total travel distance.
+
+
+## Screenshots
+
+![image](https://user-images.githubusercontent.com/74380677/172482672-c8c24e6a-7345-4594-ac3b-76d1e5cf3120.png)
+
