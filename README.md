@@ -48,27 +48,35 @@ And then, I had a optimize checkbox for optimize the route and the route button 
 ## Screenshots
 
 Initial screen:
+
 ![image](https://user-images.githubusercontent.com/74380677/172510583-08c12544-741c-4538-9733-501da4774440.png)
 
 Spacecraft selection:
+
 ![image](https://user-images.githubusercontent.com/74380677/172510610-5750d332-5ce3-4ebc-b2c5-e108506828f8.png)
 
 Changin number of passengers:
+
 ![image](https://user-images.githubusercontent.com/74380677/172510635-c02d30c2-6ddb-485a-b26f-9675f9ebfffd.png)
 
 Planets in a list to visit:
+
 ![image](https://user-images.githubusercontent.com/74380677/172510660-4b81feb9-6a30-45ee-8c7d-b2f768a2cf1e.png)
 
 Travel with error and not optmize:
+
 ![image](https://user-images.githubusercontent.com/74380677/172510684-03991c91-5de8-44c0-9632-93b5690778a5.png)
 
 Travel with error and optimize:
+
 ![image](https://user-images.githubusercontent.com/74380677/172510704-7f22dc7d-a4c7-4a7a-9696-e8bd7430b247.png)
 
 Travel success not optmize:
+
 ![image](https://user-images.githubusercontent.com/74380677/172510760-7a0442f4-9ef1-42a7-b053-75dc5d404d87.png)
 
 Travel success with optimize:
+
 ![image](https://user-images.githubusercontent.com/74380677/172510773-4d6c6aed-5808-435d-adad-7760412f7ccf.png)
 
 
