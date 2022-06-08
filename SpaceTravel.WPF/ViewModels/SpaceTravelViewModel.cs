@@ -46,9 +46,12 @@ namespace SpaceTravel.WPF.ViewModels
                 _spacecraftSelected = value;
             }
         }
+        #endregion[SPACECRAFT]
+
+
         #region[PASSENGERS]
 
-        private int _currentPassengers = 0;
+        private int _currentPassengers = 1;
         private int _maxPassengers = 0;
         public int MaxPassengers
         {
@@ -67,7 +70,6 @@ namespace SpaceTravel.WPF.ViewModels
         }
 
         #endregion[PASSENGERS]
-        #endregion[SPACECRAFT]
 
         #region[PLANETS]
         private PlanetModel _earth;
@@ -83,8 +85,8 @@ namespace SpaceTravel.WPF.ViewModels
         private List<PlanetModel> _planetsSelected = new List<PlanetModel>();
         public string PlanetNames { get { return _planetNames; } set { _planetNames = value; OnPropertyChanged("PlanetNames"); } }
 
-        private PlanetModel _selectedPlanet = new PlanetModel();
-        public PlanetModel SelectedPlanet
+        private PlanetModel? _selectedPlanet = null;
+        public PlanetModel? SelectedPlanet
         {
             get
             {
@@ -96,30 +98,40 @@ namespace SpaceTravel.WPF.ViewModels
 
                 if (planetSelected != null)
                 {
-                    _planetsSelected.Add(value);
+                    _planetsSelected.Add(planetSelected);
                     PlanetNames = String.Join(", ", _planetsSelected.Select(p => p.Name).ToList());
 
                     planetSelected = new PlanetModel();
-                    OnPropertyChanged("SelectedPlanet");
                 }
 
                 _selectedPlanet = planetSelected;
+                OnPropertyChanged("SelectedPlanet");
 
             }
         }
 
+        public void ClearPlanetList()
+        {
+            _planetsSelected = new List<PlanetModel>();
+            PlanetNames = String.Empty;
+            _selectedPlanet = null;
+
+            OnPropertyChanged("PlanetNames");
+            OnPropertyChanged("SelectedPlanet");
+
+        }
 
         #endregion[PLANETS]
 
         #region[RESULT]
-        private string _planetsToVisit = "Earth";
-        public string PlanetsToVisit
+        private string _travelResult = String.Empty;
+        public string TravelResult
         {
-            get { return _planetsToVisit; }
+            get { return _travelResult; }
             set
             {
-                _planetsToVisit = value;
-                OnPropertyChanged("PlanetsToVisit");
+                _travelResult = value;
+                OnPropertyChanged("TravelResult");
             }
         }
 
@@ -145,19 +157,12 @@ namespace SpaceTravel.WPF.ViewModels
             List<Planet> planets = _planetMapper.Mapper(_planetsSelected);
             Planet earth = _planetMapper.Mapper(_earth);
 
-            List<Planet> planetsToVisit = _spaceTravelApplication.Travel(spacecraft, planets, earth, _optimize);
+            TravelResult result = _spaceTravelApplication.Travel(spacecraft, planets, earth, _optimize);
 
-
-            PlanetsToVisit = String.Join(", ", planetsToVisit.Select(p => p.Name).ToList());
-
-            if (planets.Count > (planetsToVisit.Count - 2))
-            {
-                PlanetsToVisit += " - you have not fuel to visit all you desire planets";
-            }
+            TravelResult = result.Message;
         }
 
         #endregion[RESULT]
-
 
         private void PopulateData()
         {
@@ -177,7 +182,6 @@ namespace SpaceTravel.WPF.ViewModels
                 .ToList();
 
             _spacecraftSelected = _spacecrafts.First();
-            //_planetNames = String.Join(", ", _planets.Select(p => p.Name).ToList());
 
             PlanetModel? earth = _planets.Find(p => p.PositionIndex == 3);
 
